@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import productRoute from './routes/product.route.js'
+import 'dotenv/config'
 
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(express.urlencoded({extended:false}));
 
 
 
-mongoose.connect("mongodb+srv://multanisameet222:sameet123456@backeneddb.a14ja.mongodb.net/NODE-API?retryWrites=true&w=majority&appName=BackenedDB").then(() => {
+mongoose.connect(`mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@backeneddb.a14ja.mongodb.net/NODE-API?retryWrites=true&w=majority&appName=BackenedDB`).then(() => {
     console.log("Connected to database");
 }).catch((err) => {
     
